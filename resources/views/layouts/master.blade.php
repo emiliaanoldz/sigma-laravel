@@ -46,7 +46,7 @@
               <div class="h-icontext">
                 @guest
                   <div class="h-text">
-                    Mi Cuenta
+                    <p>Mi Cuenta</p>
                   </div>
                 @else
                   <div class="h-text">
@@ -58,17 +58,18 @@
                 </div>
               </div>
 
-            <div class="submenu">
-              <div class="h-icontext">
+              <div class="submenu">
                 @guest
                   <div class="h-text">
                     <a href="/login">Iniciar Sesion</a>
                     <a href="/register">Registrarse</a>
                   </div>
                 @else
-                  <div class="h-text">
+                  <div class="sub-text">
                     <a href="/perfil">Mi cuenta</a>
-                    <form class="" action="{{ route('logout') }}" method="post">
+                  </div>
+                  <div class="sub-text">
+                    <form class="logout" action="{{ route('logout') }}" method="post">
                       @csrf
                       <button type="submit" name="button">Desconectarse</button>
                     </form>
@@ -81,7 +82,8 @@
       </div>
 
       <div class="cont-head-b">
-        <form class="form-busq" action="index.html" method="get">
+        <form class="form-busq" action="/search" method="get">
+          @csrf
           <div class="h-categorias">
             <div class="cate-text">
               Categorías
@@ -91,7 +93,7 @@
             </div>
           </div>
           <div class="busq-input">
-            <input type="text" name="search" value="" class="search" autocomplete="off">
+            <input type="text" name="search" id ="search" class="search" autocomplete="off" placeholder="Buscar en Sigma">
           </div>
           <div class="busq-icon">
             <ion-icon name="ios-search" role="img" aria-label="search"></ion-icon>
@@ -104,8 +106,8 @@
     </main>
     <div class="nav-menu">
       <div><a href="/"><ion-icon class="nav-icon" name="home"></ion-icon></a></div>
-      <div><a href="list.php"><ion-icon class="nav-icon" name="list"></ion-icon></a></div>
-      <div><a href="checkout.php"><ion-icon class="nav-icon" name="cart"></ion-icon></a></div>
+      <div><a href="lista"><ion-icon class="nav-icon" name="list"></ion-icon></a></div>
+      <div><a href="carrito"><ion-icon class="nav-icon" name="cart"></ion-icon></a></div>
       <div><a href="perfil"><ion-icon class="nav-icon" name="person"></ion-icon></a></div>
     </div>
     <footer>
@@ -135,6 +137,10 @@
           <div class="acercaDe">
             <h3>Sobre Nosotros</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+            <br>
+            <div class="help">
+              <h4><a href="/preguntas">Ayuda - Preguntas frecuentes - Contacto </a></h4>
+            </div>
           </div>
         </div>
 
@@ -158,7 +164,7 @@
       </div>
     </footer>
     @yield ('scripts')
-    
+
     <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
   </body>
